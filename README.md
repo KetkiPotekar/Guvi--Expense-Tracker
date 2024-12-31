@@ -125,19 +125,32 @@ Once the sample data for January month is generated and stored in a table, this 
     conn.close()
 
 The following output is displayed -
-	Data from January table has been added to AllMonths.
-	Data from February table has been added to AllMonths.
-	Data from March table has been added to AllMonths.
-	Data from April table has been added to AllMonths.
-	Data from May table has been added to AllMonths.
-	Data from June table has been added to AllMonths.
-	Data from July table has been added to AllMonths.
-	Data from August table has been added to AllMonths.
-	Data from September table has been added to AllMonths.
-	Data from October table has been added to AllMonths.
-	Data from November table has been added to AllMonths.
-	Data from December table has been added to AllMonths.
-	Total rows in AllMonths table: 1200
+	
+ Data from January table has been added to AllMonths.
+	
+ Data from February table has been added to AllMonths.
+	
+ Data from March table has been added to AllMonths.
+	
+ Data from April table has been added to AllMonths.
+	
+ Data from May table has been added to AllMonths.
+	
+ Data from June table has been added to AllMonths.
+	
+ Data from July table has been added to AllMonths.
+	
+ Data from August table has been added to AllMonths.
+	
+ Data from September table has been added to AllMonths.
+	
+ Data from October table has been added to AllMonths.
+	
+ Data from November table has been added to AllMonths.
+	
+ Data from December table has been added to AllMonths.
+	
+ Total rows in AllMonths table: 1200
 
 Now we have a table called AllMonths with expense data ready for analysis. We can view this table in python using the following code - 
 
