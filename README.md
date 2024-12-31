@@ -422,7 +422,7 @@ Note- Libraries such as matplot and pyplot were installed in the VScode terminal
 	import plotly.express as px
 	
 	# Streamlit file uploader
- 	df = pd.read_csv('your_data.csv')  # Load the CSV data
+	uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'], key='unique_key')
 	
 	# Convert the 'date' column to datetime
 	df['Date'] = pd.to_datetime(df['Date'])
