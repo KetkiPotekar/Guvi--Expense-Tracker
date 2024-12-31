@@ -6,7 +6,7 @@ Mini Project - Expense Tracker
 
 Name - Ketki Potekar 
 
-Batch - 
+Batch - DS-WD-E-B23
 
 Date - 31/12/2024
 
