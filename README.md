@@ -183,4 +183,172 @@ Data exported successfully to all_months_expenses.csv
 # Step 4: Running SQL queries
 The “all_months_expenses.csv” table was downloaded. A MySQL connection was established so that queries could be run on sql workbench.
 
+# Query 1: Total Expenditure
+    SELECT SUM(Amount_Paid) AS Total_Expenditure
+    FROM allmonths
+
+This gives the total expenditure throughout the year which was Rs.309731.55/-
+
+<img width="575" alt="Query1" src="https://github.com/user-attachments/assets/a3a9d114-7c74-4718-a0f0-9112a63d068a" />
+
+# Query 2: Most Expensive Transaction
+    SELECT * 
+    FROM allmonths
+    ORDER BY Amount_Paid DESC
+    Limit 1
+
+
+# Query 3: Total Monthly Expenditure
+    SELECT 
+	    Month(Date) AS Month,
+	    SUM(Amount_Paid) AS Monthly_Expenditure
+    FROM allmonths
+    GROUP BY Month(Date)
+    ORDER BY month
+
+
+    
+# Query 4: Top Spending Categories
+    SELECT 
+	    Category
+	    SUM(Amount_Paid) AS Total_Spent
+    FROM allmonths
+    GROUP BY Category
+    ORDER BY Total_Spent DESC
+
+
+# Query 5: Payment Mode Distribution
+    SELECT
+	    Month(Date) AS Month
+	    SUM(Cashback) AS Total_Cashback
+    FROM allmonths
+    GROUP BY Month(Date)
+    ORDER BY Month
+
+
+# Query 6: Average Spend per Transaction
+    SELECT 
+	    AVG(Amount_Paid) AS Average_Transaction_Amount
+    FROM allmonths
+
+
+# Query 7: Categories with Cashback Opportunities
+    SELECT 
+	    Category,
+	    SUM(Cashback) as Total_Cashback
+    FROM allmonths
+    GROUP BY Category
+    ORDER BY Total_Cashback DESC
+
+
+# Query 8: Least Spending Categories
+    SELECT 
+	    Category
+	    SUM(Amount_Paid) AS Total_Spent
+    FROM allmonths
+    GROUP BY Category
+    ORDER BY Total Spent  ASC
+    LIMIT 1
+
+
+# Query 9: Average Monthly Cashback
+    SELECT
+        Month(Date) AS Month,
+        AVG(Cashback) AS Avg_Cashback
+    FROM allmonths
+    GROUP BY Month(Date)
+
+
+# Query 10: Daily Spending Trends
+    SELECT 
+	    Day(Date) AS Date,
+	    SUM(Amount_Paid) AS Total_Spent
+    FROM allmonths
+
+
+# Query 11: Month with Maximum Expenditure
+    SELECT 
+	    Month(Date) AS Month,
+	    SUM(Amount_Paid) AS Total_Expenditure
+    FROM allmonths
+    GROUP BY Month(Date)
+    ORDER BY Total_Expenditure DESC
+    LIMIT 1
+
+
+# Query 12: Maximum and Minimum Transaction Amount
+    SELECT
+	    MAX(Amount_Paid) AS Max_Transaction
+	    MIN(Amount_Paid) AS Min_Transaction
+    FROM allmonths
+
+
+# Query 13: Cashback earned by Month
+    SELECT 
+	    Month(Date) AS Month
+    SUM(Cashback) AS Total_Cashback
+    FROM allmonths
+    GROUP BY Month(Date)
+    ORDER BY Month
+
+
+# Query 14: Transaction exceeding amount Rs 490
+    SELECT *
+    FROM allmonths
+    WHERE Amount_Paid > 490
+
+
+# Query 15: Average Transaction Amount by Category
+    SELECT 
+	    Category,
+	    AVG(Amount_Paid) AS Avg_Transaction_Amount
+    FROM allmonths
+    GROUP BY Category
+
+
+
+# Step 5: Data Visualisation
+
+# Visualisation 1 - Line Graph
+
+    import pandas as pd
+    import streamlit as st
+    from pandas.api.types import CategoricalDtype
+
+    #Streamlit file uploader
+    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+
+    if uploaded_file is not None:
+        # Load the data
+        df = pd.read_csv(uploaded_file)
+
+        # Ensure 'Date' column is in datetime format
+        if 'Date' in df.columns:
+            df['Date'] = pd.to_datetime(df['Date'])  # Convert to datetime
+            df['Month_Num'] = df['Date'].dt.month    # Extract numerical month
+            df['Month_Name'] = df['Date'].dt.strftime('%B')  # Extract month name
+        else:
+            st.error("The uploaded file must contain a 'Date' column.")
+
+        # Define the correct month order
+        month_order = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December']
+        month_type = CategoricalDtype(categories=month_order, ordered=True)
+        df['Month_Name'] = df['Month_Name'].astype(month_type)  # Set categorical type
+
+        # Sort the DataFrame by Month_Name
+        df = df.sort_values('Month_Name')
+
+        # Pivot data for visualization
+        pivot_table = df.pivot_table(
+            index='Month_Name', columns='Category', values='Amount_Paid', aggfunc='sum'
+        )
+
+        # Display the line chart
+        st.line_chart(pivot_table)
+
+
+
+
+
 
