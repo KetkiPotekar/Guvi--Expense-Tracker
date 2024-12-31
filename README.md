@@ -1,9 +1,14 @@
 # Guvi--Expense-Tracker
+
 Mini project for Guvi class for analyzing personal expenses
+
 Mini Project - Expense Tracker
+
 Name - Ketki Potekar 
+
 Batch - 
-Date - 30/12/2024
+
+Date - 31/12/2024
 
 # Introduction
 Purpose: 
@@ -120,19 +125,19 @@ Once the sample data for January month is generated and stored in a table, this 
     conn.close()
 
 The following output is displayed -
-Data from January table has been added to AllMonths.
-Data from February table has been added to AllMonths.
-Data from March table has been added to AllMonths.
-Data from April table has been added to AllMonths.
-Data from May table has been added to AllMonths.
-Data from June table has been added to AllMonths.
-Data from July table has been added to AllMonths.
-Data from August table has been added to AllMonths.
-Data from September table has been added to AllMonths.
-Data from October table has been added to AllMonths.
-Data from November table has been added to AllMonths.
-Data from December table has been added to AllMonths.
-Total rows in AllMonths table: 1200
+	Data from January table has been added to AllMonths.
+	Data from February table has been added to AllMonths.
+	Data from March table has been added to AllMonths.
+	Data from April table has been added to AllMonths.
+	Data from May table has been added to AllMonths.
+	Data from June table has been added to AllMonths.
+	Data from July table has been added to AllMonths.
+	Data from August table has been added to AllMonths.
+	Data from September table has been added to AllMonths.
+	Data from October table has been added to AllMonths.
+	Data from November table has been added to AllMonths.
+	Data from December table has been added to AllMonths.
+	Total rows in AllMonths table: 1200
 
 Now we have a table called AllMonths with expense data ready for analysis. We can view this table in python using the following code - 
 
@@ -157,6 +162,7 @@ Now we have a table called AllMonths with expense data ready for analysis. We ca
 
 This is the output generated -
 
+<img width="728" alt="Expenses_Table" src="https://github.com/user-attachments/assets/0ed3dccc-6eea-49be-b6fb-6e8cb1bbeca8" />
 
 # Step3: Save this table in .csv format 
     import sqlite3
@@ -178,7 +184,7 @@ This is the output generated -
     print(f"Data exported successfully to {csv_file_path}")
     
 Output -
-Data exported successfully to all_months_expenses.csv
+	Data exported successfully to all_months_expenses.csv
 
 # Step 4: Running SQL queries
 The “all_months_expenses.csv” table was downloaded. A MySQL connection was established so that queries could be run on sql workbench.
@@ -197,6 +203,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     ORDER BY Amount_Paid DESC
     Limit 1
 
+<img width="575" alt="Query2" src="https://github.com/user-attachments/assets/7b553197-19f3-42a3-8d70-e75fc139895b" />
 
 # Query 3: Total Monthly Expenditure
     SELECT 
@@ -206,7 +213,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     GROUP BY Month(Date)
     ORDER BY month
 
-
+<img width="577" alt="Query3" src="https://github.com/user-attachments/assets/00a41d3c-6e98-4ae4-8849-0ee7fb61ed56" />
     
 # Query 4: Top Spending Categories
     SELECT 
@@ -216,6 +223,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     GROUP BY Category
     ORDER BY Total_Spent DESC
 
+<img width="572" alt="Query4" src="https://github.com/user-attachments/assets/440cdfff-ad43-44d7-acde-14002421424a" />
 
 # Query 5: Payment Mode Distribution
     SELECT
@@ -225,12 +233,14 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     GROUP BY Month(Date)
     ORDER BY Month
 
+<img width="567" alt="Query5" src="https://github.com/user-attachments/assets/77de06f0-5ba6-4c4b-825f-670e0a1e930d" />
 
 # Query 6: Average Spend per Transaction
     SELECT 
 	    AVG(Amount_Paid) AS Average_Transaction_Amount
     FROM allmonths
 
+<img width="528" alt="Query6" src="https://github.com/user-attachments/assets/cbb45fff-ec6a-47be-b621-5768501fc8b0" />
 
 # Query 7: Categories with Cashback Opportunities
     SELECT 
@@ -240,6 +250,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     GROUP BY Category
     ORDER BY Total_Cashback DESC
 
+<img width="526" alt="Query7" src="https://github.com/user-attachments/assets/5d0caf1c-a995-45a0-897b-230fa168dd8a" />
 
 # Query 8: Least Spending Categories
     SELECT 
@@ -250,6 +261,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     ORDER BY Total Spent  ASC
     LIMIT 1
 
+<img width="526" alt="Query8" src="https://github.com/user-attachments/assets/d69c6e8c-41d2-4dfe-8d11-c3419986adc9" />
 
 # Query 9: Average Monthly Cashback
     SELECT
@@ -258,6 +270,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     FROM allmonths
     GROUP BY Month(Date)
 
+<img width="530" alt="Query9" src="https://github.com/user-attachments/assets/e2c54e6f-acab-412f-9c5e-8632c99a82ec" />
 
 # Query 10: Daily Spending Trends
     SELECT 
@@ -265,6 +278,8 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
 	    SUM(Amount_Paid) AS Total_Spent
     FROM allmonths
 
+<img width="572" alt="Query10 1" src="https://github.com/user-attachments/assets/c7701596-845a-48c9-acf7-2f5c473d8f5b" />
+<img width="572" alt="Query10 2" src="https://github.com/user-attachments/assets/ac0d6c7c-4f25-44b4-b493-06144f7f7dbf" />
 
 # Query 11: Month with Maximum Expenditure
     SELECT 
@@ -275,6 +290,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     ORDER BY Total_Expenditure DESC
     LIMIT 1
 
+<img width="568" alt="Query11" src="https://github.com/user-attachments/assets/eb39fe3b-095b-40ff-8fc8-e9accfd1713d" />
 
 # Query 12: Maximum and Minimum Transaction Amount
     SELECT
@@ -282,6 +298,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
 	    MIN(Amount_Paid) AS Min_Transaction
     FROM allmonths
 
+<img width="533" alt="Query12" src="https://github.com/user-attachments/assets/e13b805e-9542-4fcb-92d3-a24bb81e763b" />
 
 # Query 13: Cashback earned by Month
     SELECT 
@@ -291,12 +308,14 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     GROUP BY Month(Date)
     ORDER BY Month
 
+<img width="572" alt="Query13" src="https://github.com/user-attachments/assets/2bf3082d-a2ac-4578-a409-110f69e0c037" />
 
 # Query 14: Transaction exceeding amount Rs 490
     SELECT *
     FROM allmonths
     WHERE Amount_Paid > 490
 
+<img width="517" alt="Query14" src="https://github.com/user-attachments/assets/fad9eeaf-79b6-496a-b665-f0d3a7607a20" />
 
 # Query 15: Average Transaction Amount by Category
     SELECT 
@@ -305,7 +324,7 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
     FROM allmonths
     GROUP BY Category
 
-
+<img width="539" alt="Query15" src="https://github.com/user-attachments/assets/2e998368-0bce-45dd-9248-cdd4e338c399" />
 
 # Step 5: Data Visualisation
 
@@ -405,56 +424,4 @@ Note- Libraries such as matplot and pyplot were installed in the VScode terminal
 	# Display the box plot in Streamlit
 	st.plotly_chart(fig)
 
-
-# Visualisation 4: 
-
-	import streamlit as st
-	import pandas as pd
-	import plotly.express as px
-	
-	# Streamlit file uploader
-	uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'], key='unique_key')
-	
-	# Check if file is uploaded
-	if uploaded_file is not None:
-    	# Load the data from CSV
-    	df = pd.read_csv(uploaded_file)
-	
-    	# Check the first few rows to understand the structure
-    	st.write(df.head())  # Optional, to see the structure of the file
-	
-    	# Ensure 'Date' is in datetime format if not already
-    	df['Date'] = pd.to_datetime(df['Date'])
-	
-    	# Define categories for essentials and discretionary spending
-    	essential_categories = ['Food', 'Transportation', 'Bills', 'Groceries']
-    	discretionary_categories = ['Subscriptions', 'Entertainment', 'Miscellaneous']
-	
-    	# Create two new columns: 'Essential' and 'Discretionary'
-    	df['Essential'] = df['Category'].apply(lambda x: x in essential_categories)
-    	df['Discretionary'] = df['Category'].apply(lambda x: x in discretionary_categories)
-	
-    	# Extract the month and year from the 'Date' column, convert to string format
-    	df['Month'] = df['Date'].dt.to_period('M').astype(str)
-	
-    	# Group by Month and calculate the sum of Essential and Discretionary spending
-    	monthly_expenses = df.groupby(['Month']).agg(
-        	essential_spending=('Amount_Paid', lambda x: x[df['Essential']].sum()),
-        	discretionary_spending=('Amount_Paid', lambda x: x[df['Discretionary']].sum())
-    	).reset_index()
-	
-    	# Create a new dataframe for plotting
-    	monthly_expenses_melted = monthly_expenses.melt(id_vars='Month', value_vars=['essential_spending', 'discretionary_spending'],
-                                                     	var_name='Expense Type', value_name='Amount_Paid')
-
-
-    	# Create stacked bar chart using Plotly
-    	fig = px.bar(monthly_expenses_melted, x='Month', y='Amount_Paid', color='Expense Type',
-                 	title='Monthly Essential vs Discretionary Spending',
-                 	labels={'Month': 'Month', 'Amount_Paid': 'Amount Spent'},
-                 	color_discrete_map={'essential_spending': 'green', 'discretionary_spending': 'red'})
-
-
-    	# Display chart in Streamlit
-    	st.plotly_chart(fig)
 
