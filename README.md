@@ -348,7 +348,113 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
         st.line_chart(pivot_table)
 
 
+# Visualisation 2: Pie chart
+Note- Libraries such as matplot and pyplot were installed in the VScode terminal before running the code.
+	import pandas as pd
+	import streamlit as st
+	import matplotlib.pyplot as plt
+
+	# Streamlit file uploader
+	uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'], key='csv_upload')
+
+	if uploaded_file is not None:
+    	# Load the data
+    	df = pd.read_csv(uploaded_file)
+
+    	# Ensure 'Date' column is in datetime format
+    	if 'Date' in df.columns:
+        	df['Date'] = pd.to_datetime(df['Date'])  # Convert to datetime
+        	df['Month_Name'] = df['Date'].dt.strftime('%B')  # Extract month name
+    	else:
+        	st.error("The uploaded file must contain a 'Date' column.")
+	
+    	# Calculate total amount spent by category
+    	category_totals = df.groupby('Category')['Amount_Paid'].sum()
+	
+    	# Display the pie chart
+    	fig, ax = plt.subplots()
+    	ax.pie(
+        	category_totals,
+        	labels=category_totals.index,
+        	autopct='%1.1f%%',
+        	startangle=90
+    	)
+    	ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle.
+    	st.pyplot(fig)
+
+# Visualisation 3: Box-plot
+
+	import streamlit as st
+	import pandas as pd
+	import plotly.express as px
+	
+	# Streamlit file uploader
+ 	df = pd.read_csv('your_data.csv')  # Load your CSV data
+	
+	# Convert the 'date' column to datetime
+	df['Date'] = pd.to_datetime(df['Date'])
+	
+	# Create a box plot to represent the highest and lowest amount spent by category
+	fig = px.box(df,
+             	x='Category',  # Change x-axis to 'Category' for the categories of expenditure
+             	y='Amount_Paid',
+             	title='Spending Distribution by Category',
+             	labels={'Amount_Paid': 'Amount Spent', 'Category': 'Expense Category'},
+             	color='Category')  # Color categories for clarity
+	
+	# Display the box plot in Streamlit
+	st.plotly_chart(fig)
 
 
+# Visualisation 4: 
 
+	import streamlit as st
+	import pandas as pd
+	import plotly.express as px
+	
+	# Streamlit file uploader
+	uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'], key='unique_key')
+	
+	# Check if file is uploaded
+	if uploaded_file is not None:
+    	# Load the data from CSV
+    	df = pd.read_csv(uploaded_file)
+	
+    	# Check the first few rows to understand the structure
+    	st.write(df.head())  # Optional, to see the structure of the file
+	
+    	# Ensure 'Date' is in datetime format if not already
+    	df['Date'] = pd.to_datetime(df['Date'])
+	
+    	# Define categories for essentials and discretionary spending
+    	essential_categories = ['Food', 'Transportation', 'Bills', 'Groceries']
+    	discretionary_categories = ['Subscriptions', 'Entertainment', 'Miscellaneous']
+	
+    	# Create two new columns: 'Essential' and 'Discretionary'
+    	df['Essential'] = df['Category'].apply(lambda x: x in essential_categories)
+    	df['Discretionary'] = df['Category'].apply(lambda x: x in discretionary_categories)
+	
+    	# Extract the month and year from the 'Date' column, convert to string format
+    	df['Month'] = df['Date'].dt.to_period('M').astype(str)
+	
+    	# Group by Month and calculate the sum of Essential and Discretionary spending
+    	monthly_expenses = df.groupby(['Month']).agg(
+        	essential_spending=('Amount_Paid', lambda x: x[df['Essential']].sum()),
+        	discretionary_spending=('Amount_Paid', lambda x: x[df['Discretionary']].sum())
+    	).reset_index()
+	
+    	# Create a new dataframe for plotting
+    	monthly_expenses_melted = monthly_expenses.melt(id_vars='Month', value_vars=['essential_spending', 'discretionary_spending'],
+                                                     	var_name='Expense Type', value_name='Amount_Paid')
+
+
+    	# Create stacked bar chart using Plotly
+    	fig = px.bar(monthly_expenses_melted, x='Month', y='Amount_Paid', color='Expense Type',
+                 	title='Monthly Essential vs Discretionary Spending',
+                 	labels={'Month': 'Month', 'Amount_Paid': 'Amount Spent'},
+                 	color_discrete_map={'essential_spending': 'green', 'discretionary_spending': 'red'})
+
+
+    	# Display chart in Streamlit
+    	st.plotly_chart(fig)
 
