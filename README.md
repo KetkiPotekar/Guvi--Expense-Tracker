@@ -67,6 +67,7 @@ This project aims to simulate an expense tracker for an individual using the Fak
     print("Sample data for the specified month generated!")
 
 This will give the following output where one needs to input the desired month and year.
+   
     Enter the target month (1-12):  1
     Enter the target year (e.g., 2024):  2024
     Sample data for the specified month generated!
