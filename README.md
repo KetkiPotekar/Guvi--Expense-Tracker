@@ -19,10 +19,13 @@ This project aims to simulate an expense tracker for an individual using the Fak
 
 # Objectives:
 
+Data Generation using Faker library
 
+Data storage and management using SQL database
 
+Data Analysis using MySQL Workbench
 
-
+Data Visualisation using Streamlit library and VSCode
 
 # Data Generation using Faker library
 # Step 1 : Generate expense data for each month 
