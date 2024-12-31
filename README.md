@@ -379,6 +379,11 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
         # Display the line chart
         st.line_chart(pivot_table)
 
+<img width="631" alt="Line_graph" src="https://github.com/user-attachments/assets/fb06c42c-062b-4273-883b-5f635f773e9d" />
+
+The following visualisation represents a line graph with x axis as months, y axis as amount paid and different lines representing different categories of expenditure.
+
+This helps us analysize the spending trends throughout the year for different categories.
 
 # Visualisation 2: Pie chart
 Note- Libraries such as matplot and pyplot were installed in the VScode terminal before running the code.
@@ -415,6 +420,12 @@ Note- Libraries such as matplot and pyplot were installed in the VScode terminal
     	ax.axis('equal')  # Equal aspect ratio ensures the pie is drawn as a circle.
     	st.pyplot(fig)
 
+<img width="665" alt="Pie_chart" src="https://github.com/user-attachments/assets/d30be732-19dd-4326-be6e-cac1ecc1142d" />
+
+The following visualisation represents a pie chart, showing percentages of money spent out of the total expenses spent in each category throughout the year.
+
+This helps the spender analyse in which category most expenses are taking place in order to retrospect and cut down expendtiure accordingly.
+
 # Visualisation 3: Box-plot
 
 	import streamlit as st
@@ -438,4 +449,6 @@ Note- Libraries such as matplot and pyplot were installed in the VScode terminal
 	# Display the box plot in Streamlit
 	st.plotly_chart(fig)
 
+<img width="602" alt="Box_plot" src="https://github.com/user-attachments/assets/88228a18-5fc8-422c-8538-5343e76d6c91" />
 
+This graph represnts spending distribution by category. This shows variance in expenditure in each category. 
