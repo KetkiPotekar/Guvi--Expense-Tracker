@@ -382,11 +382,11 @@ This gives the total expenditure throughout the year which was Rs.309731.55/-
 
 # Visualisation 2: Pie chart
 Note- Libraries such as matplot and pyplot were installed in the VScode terminal before running the code.
-	import pandas as pd
+ 	import pandas as pd
 	import streamlit as st
 	import matplotlib.pyplot as plt
-
-	# Streamlit file uploader
+	
+ 	# Streamlit file uploader
 	uploaded_file = st.file_uploader("Upload your CSV file", type=['csv'], key='csv_upload')
 
 	if uploaded_file is not None:
